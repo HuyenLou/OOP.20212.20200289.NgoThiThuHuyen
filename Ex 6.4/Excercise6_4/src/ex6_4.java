@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ex6_4 {
     public static void main(String[] args){
-        int number_of_day;
+        int number_of_day = 0;
         String month;
         int year;
         ArrayList<String> months_31days = new ArrayList<String>();
@@ -28,32 +28,36 @@ public class ex6_4 {
         Scanner input = new Scanner(System.in);
         System.out.println("enter the month: ");
         month = input.nextLine();
-        year = input.nextInt();
         if (months_31days.contains(month) == false & months_30days.contains(month) == false & special_month.contains(month) == false){
+        	Scanner input2 = new Scanner(System.in);
             System.out.println("enter the month again: ");
-            month = input.nextLine();}
-        else{
-            if (year < 0) {
+            month = input2.nextLine();
+        }
+        
+        System.out.println("enter the year: ");
+        year = input.nextInt();
+        if (year < 0) {
+            	Scanner input3 = new Scanner(System.in);
                 System.out.println("enter the year again: ");
-                year = input.nextInt();
-            }
-            else{
-                if (months_31days.contains(month) == true){
-                     number_of_day = 31;
+                year = input3.nextInt();}
+            
+        if (months_31days.contains(month) == true){
+                number_of_day = 31;
                 }
-                else if (months_30days.contains(month) == true){
-                    number_of_day = 30;}
-                else{
+        else if (months_30days.contains(month) == true){
+                        number_of_day = 30;}
+        else{
                     if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) {
-                        number_of_day = 29;
-                    } else {
-                        number_of_day = 28;
-                }
-            }
-            System.out.println(month + " of " + year + " has " + number_of_day + " days\n");    
+                            number_of_day = 29;
+                  } else {
+                            number_of_day = 28;
+                    }
+                }   
+            
+        System.out.println(month + " of " + year + " has " + number_of_day + " days\n");    
   }  
         } 
-    }
+  
     
-}   
+  
     
