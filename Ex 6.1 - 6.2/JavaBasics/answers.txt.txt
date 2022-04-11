@@ -1,0 +1,5 @@
+6.1 question 1: What happens if users choose “Cancel”?
+when users choose "Cancel", the java program will not be saved and not run. 
+6.1 question 2: How to customize the options to users, e.g., only two options: “Yes” and “No”, OR “I do” and “I
+don’t” 
+To customize the options to users, we can use optionType : DEFAULT_OPTION; YES_NO_OPTION; YES_NO_CANCEL_OPTION or OK_CANCEL_OPTION, we aren't limited to this set of option buttons. we can provide any buttons you want using the options parameter.
