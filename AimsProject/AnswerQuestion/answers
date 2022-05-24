@@ -1,0 +1,6 @@
+Question:
+1.After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two
+objects still remain?
+Answer : JAVA allow me to do this 
+As : With method overloading, multiple methods can have the same name with different parameters
+Multiple methods can have the same name as long as the number and/or type of parameters are different.
