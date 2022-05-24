@@ -1,6 +1,9 @@
 Question:
 1.After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two
 objects still remain?
-Answer : JAVA allow me to do this 
-As : With method overloading, multiple methods can have the same name with different parameters
-Multiple methods can have the same name as long as the number and/or type of parameters are different.
+Answer : As we swap 2 object through tmp,  Only the method
+references are swap,
+not the original
+references.Java creates a copy of the variable being passed in the method and then do the manipulations. Hence the change is not reflected in the main method.
+2.After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is
+the title of the JungleDVD changed?
