@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.utils.DVDUtils;
 import java.lang.Float;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class DVDUtils {
 	public static int compareByCost(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {

@@ -1,7 +1,8 @@
 package hust.soict.dsai.aims.store.Store;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
 import java.util.Scanner;
+
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class Store {
 

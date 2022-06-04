@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.Aims;
 
 import hust.soict.dsai.aims.cart.Cart.Cart;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.store.Store.Store;
 
 import java.util.Scanner;

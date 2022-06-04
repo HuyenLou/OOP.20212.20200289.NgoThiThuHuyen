@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.Aims;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class DiskTest {
 
