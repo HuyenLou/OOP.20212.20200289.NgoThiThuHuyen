@@ -2,7 +2,7 @@ package hust.soict.dsai.aims.media;
 import java.time.LocalDate;   
 
 
-public class DigitalVideoDisc extends Media {
+public class DigitalVideoDisc extends Media implements Playable {
 	private String director;
 	private int length;
 	private static int nbDigitalVideoDiscs = 0;
@@ -90,5 +90,14 @@ public class DigitalVideoDisc extends Media {
     	}
 		return true;
     	
+    }
+    @Override
+    public void play() {
+        if (this.getLength() > 0) {
+        	System.out.println("Playing DVD: " + this.getTitle());
+            System.out.println("DVD length: " + this.getLength());
+        } else {
+        	 System.out.println("The DVD has some problem");
+        }
     }
 }

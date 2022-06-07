@@ -54,6 +54,23 @@ public class Media {
         this.cost = cost;
     }
     
+
+    @Override
+    public String toString (){
+        System.out.println("-----------------------------");
+        StringBuilder info = new StringBuilder("");
+        if (this.getTitle() != null) {
+            info.append("Title: ").append(this.getTitle()).append("\n");
+        }
+        if (this.getCategory() != null) {
+            info.append("Category: ").append(this.getCategory()).append("\n");
+        }
+        if (this.getCost() != 0) {
+            info.append("Cost: ").append(this.getCost()).append("$").append("\n");
+        }
+        return info.toString();
+    }
+    
 	
 
 }

@@ -4,23 +4,25 @@ import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.store.Store.Store;
 
 public class StoreTest {
+    public static void main(String[] args){
+        Store store = new Store();
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87,
+        24.95f);
+        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+        DigitalVideoDisc dvd4 = new DigitalVideoDisc("Spider Man", "Science Fiction", "George Lucas", 90,
+                                25.05f);
+        store.addMedia(dvd1);
+        store.addMedia(dvd2);
+        store.addMedia(dvd3);
+        store.addMedia(dvd4);
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Store store = new Store();
+        store.removeMedia(dvd1);
+        
+        System.out.println(store.searchByTitle("Spider man").toString());
+        
+        store.DisplayStore();
 
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Aller", 87, 19.95f);
-		store.addDVD(dvd1);
-
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-		store.addDVD(dvd2);
-
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
-		store.addDVD(dvd3);
-		
-		store.removeDVD(dvd3);
-		
-		
-	}
-
+    }
+    
 }
