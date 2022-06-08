@@ -5,6 +5,7 @@ import hust.soict.dsai.aims.media.Media;
 
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.store.Store.Store;
+import hust.soict.dsai.thread.MemoryDaemon.MemoryDaemon;
 
 import java.util.Scanner;
 
@@ -46,6 +47,8 @@ public class Aims {
 	}
 
 	public static void main(String[] args) {
+		
+				
 		Cart anOrder = new Cart();
 
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Aller", 87, 19.95f);
@@ -273,6 +276,25 @@ public class Aims {
 			}
 		} while (flag);
 
+
+		//MemoryDaemon memory = new MemoryDaemon();
+		//memory.run();
+
+		Thread memory = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+			    for(int n = 0; n < 10; n++) {
+			    	System.out.println("Thread " + n);
+			    }
+				
+			}
+			
+		});
+		memory.setDaemon(true);
+	    memory.start();
+	    memory.run();
 	}
+	
 
 }
