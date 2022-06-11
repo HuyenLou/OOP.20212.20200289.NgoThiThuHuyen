@@ -172,7 +172,7 @@ public class Cart {
 	@Override
 	public String toString() {
 		if (this.itemsOrdered.size() == 0) {
-			return "There is no media in the cart";
+			return "There is no media in the cart.";
 		} else {
 			StringBuilder info = new StringBuilder("");
 			for (Media media : this.itemsOrdered) {

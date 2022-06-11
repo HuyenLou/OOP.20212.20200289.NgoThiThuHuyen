@@ -280,20 +280,20 @@ public class Aims {
 		//MemoryDaemon memory = new MemoryDaemon();
 		//memory.run();
 
-		Thread memory = new Thread(new Runnable() {
+		//Thread memory = new Thread(new Runnable() {
 
-			@Override
-			public void run() {
-			    for(int n = 0; n < 10; n++) {
-			    	System.out.println("Thread " + n);
-			    }
+			//@Override
+			//public void run() {
+			    //for(int n = 0; n < 10; n++) {
+			    	//System.out.println("Thread " + n);
+			    //}
 				
-			}
+			//}
 			
-		});
-		memory.setDaemon(true);
-	    memory.start();
-	    memory.run();
+		//});
+		//memory.setDaemon(true);
+	    //memory.start();
+	    //memory.run();
 	}
 	
 

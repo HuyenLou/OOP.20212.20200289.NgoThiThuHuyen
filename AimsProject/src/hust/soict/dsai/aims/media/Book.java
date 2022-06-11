@@ -5,12 +5,45 @@ import java.util.List;
 
 public class Book extends Media {
 	private int id;
+	private static int count = 0;
 	private static int nbBooks = 0;
 	private List<String> authors = new ArrayList<String>();
 
-	public Book() {
-		// TODO Auto-generated constructor stub
-	}
+	   public Book() {
+	        super();
+	        nbBooks++;
+	        count++;
+	        this.setId(count);
+	    }
+
+	    public Book(String title) {
+	        super(title);
+	        nbBooks++;
+	        count++;
+	        this.setId(count);
+	    }
+
+	    public Book(String title, float cost) {
+	        super(title, cost);
+	        nbBooks++;
+	        count++;
+	        this.setId(count);
+	    }
+
+	    public Book(String title, String category, float cost) {
+	        super(title, category, cost);
+	        nbBooks++;
+	        count++;
+	        this.setId(count);
+	    }
+
+	    public Book(String title, String category, float cost, List<String> authors) {
+	        super(title, category, cost);
+	        this.authors = authors;
+	        nbBooks++;
+	        count++;
+	        this.setId(count);
+	    }
 
 	public void addAuthor(String author) {
 		if (this.authors.contains(author) == true) {
@@ -48,9 +81,9 @@ public class Book extends Media {
 	public String toString() {
 		StringBuilder info = new StringBuilder(super.toString());
 		if (this.authors.size() != 0) {
-			info.append("Authors: " + "\n");
+			info.append("The authors:  " + "\n");
 			for (String author : this.authors) {
-				info.append("Author: ").append(author).append("\n");
+				info.append("Author:  ").append(author).append("\n");
 			}
 		}
 		return info.toString();

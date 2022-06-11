@@ -58,7 +58,7 @@ public class Store {
     @Override
     public String toString() {
         if (this.itemsInStore.size() == 0) {
-            return "There is no media in the store";
+            return "There is no media in the store.";
         } else {
             StringBuilder info = new StringBuilder("");
             for (Media media : this.itemsInStore) {

@@ -46,11 +46,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
 	}
 
-	public String toString() {
-		return "DVD - " + super.getTitle() + " - " + super.getCategory() + " - " + director + " - " + length + " : "
-				+ super.getCost() + "$";
-	}
-
 	public String getDirector() {
 		return director;
 	}
@@ -93,6 +88,10 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		return true;
 
 	}
+	@Override
+    public String toString() {
+        return super.toString();
+    }
 
 	@Override
 	public void play() {

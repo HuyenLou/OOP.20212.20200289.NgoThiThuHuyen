@@ -51,10 +51,6 @@ public class Track implements Playable, Comparable<Track>{
 		this.length = length;
 	}
 	
-	 public String toString() {
-	        return "Title: " + this.getTitle() + " - " + "Length: " + this.getLength();
-	        
-	    }
 	    public boolean equals(Object obj) {
 	        if (obj == this) {
 	            return true;
@@ -87,6 +83,10 @@ public class Track implements Playable, Comparable<Track>{
 		return -1;
 	}
 
+	 @Override
+	    public String toString() {
+	        return "Title:  " + this.getTitle() + " | " + "Length: " + this.getLength() + "s";
+	    }
 	public int getId() {
 		return id;
 	}
