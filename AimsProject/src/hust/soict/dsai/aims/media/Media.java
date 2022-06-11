@@ -54,6 +54,23 @@ public class Media {
         this.cost = cost;
     }
     
+    public boolean equals(Object o) {
+    	  if (o == this) {
+              return true;
+          }
+          if (!(o instanceof Media)) {
+              return false;
+          }
+          
+          Media c = (Media) o;
+          
+          // Compare the data members and return accordingly
+          return Double.compare(id, c.id) == 0;
+      }
+  
+    	
+  
+    
 
     @Override
     public String toString (){

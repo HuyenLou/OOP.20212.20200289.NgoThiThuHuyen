@@ -5,6 +5,7 @@ import hust.soict.dsai.aims.media.Media;
 
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.store.Store.Store;
+import hust.soict.dsai.thread.MemoryDaemon.MemoryDaemon;
 
 import java.util.Scanner;
 
@@ -46,6 +47,8 @@ public class Aims {
 	}
 
 	public static void main(String[] args) {
+		
+				
 		Cart anOrder = new Cart();
 
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Aller", 87, 19.95f);
@@ -68,13 +71,13 @@ public class Aims {
 
 		Store store = new Store();
 
-		Media d1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Aller", 87, 19.95f);
+		DigitalVideoDisc d1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Aller", 87, 19.95f);
 		store.addMedia(d1);
 
-		Media d2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+		DigitalVideoDisc d2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 		store.addMedia(d2);
 
-		Media d3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+		DigitalVideoDisc d3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 		store.addMedia(d3);
 
 		int a, b, c, d, e, f, id;
@@ -90,10 +93,10 @@ public class Aims {
 		DigitalVideoDisc dvd6 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 		currentCart.addMedia(dvd6);
 		
-		Media dvd8 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+		DigitalVideoDisc dvd8 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 		currentCart.addMedia(dvd8);
 
-		Media dvd9 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+		DigitalVideoDisc dvd9 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 		currentCart.addMedia(dvd9);
 		
 
@@ -273,6 +276,25 @@ public class Aims {
 			}
 		} while (flag);
 
+
+		//MemoryDaemon memory = new MemoryDaemon();
+		//memory.run();
+
+		Thread memory = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+			    for(int n = 0; n < 10; n++) {
+			    	System.out.println("Thread " + n);
+			    }
+				
+			}
+			
+		});
+		memory.setDaemon(true);
+	    memory.start();
+	    memory.run();
 	}
+	
 
 }
