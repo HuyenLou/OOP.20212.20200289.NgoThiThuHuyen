@@ -65,7 +65,7 @@ public class Cart {
 			for (Media media : this.itemsOrdered) {
 				if (media.equals(luckyItem) == false) {
 					total += media.getCost();
-				}	
+				}
 			}
 		}
 		return total;
@@ -79,8 +79,7 @@ public class Cart {
 				System.out.println("item has id " + id + " is: " + this.itemsOrdered.get(i).toString());
 			}
 		}
-}
-
+	}
 
 	public void searchByTitle(String title) {
 		int count = 0;
@@ -106,120 +105,44 @@ public class Cart {
 		}
 		return null;
 	}
-	
+
 	public void sortCartByCost() {
-		 System.out.println("sort by cost: ");
-		 Collections.sort(this.itemsOrdered, new Comparator<Media>() {
-			    @Override
-				public int compare(Media o1, Media o2) {
-			    	  if (o1.getCost() < o2.getCost()) {
-		                    return -1;
-		                } else {
-		                    if (o1.getCost() == o2.getCost()) {
-		                        return 0;
-		                    } else {
-		                        return 1;
-		                    }
-		                }
-				}
-
-	        });
-
-        
-		
+		System.out.println("sort by cost: ");
+		this.itemsOrdered.sort(Media.COMPARE_BY_TITLE_COST);
 		for (Media media : this.itemsOrdered) {
 			System.out.println(media.toString());
 		}
 	}
 
 	public void sortCartByTitle() {
-		 System.out.println("sort by title: ");
-		 Collections.sort(this.itemsOrdered, new Comparator<Media>() {
-			    @Override
-				public int compare(Media o1, Media o2) {
-			    	  if (o1.getTitle().compareToIgnoreCase(o2.getTitle()) < 0) {
-		                    return -1;
-		                } else {
-		                    if (o1.getTitle().compareToIgnoreCase(o2.getTitle()) == 0) {
-		                        return 0;
-		                    } else {
-		                        return 1;
-		                    }
-		                }
-				}
+		System.out.println("sort by title: ");
+		this.itemsOrdered.sort(Media.COMPARE_BY_TITLE_COST);
 
-	        });
-
-        
-		
 		for (Media media : this.itemsOrdered) {
 			System.out.println(media.toString());
 		}
 	}
 
-	
 	public void print() {
-		Collections.sort(this.itemsOrdered, new Comparator<Media>() {
-		    @Override
-			public int compare(Media o1, Media o2) {
-		    	  if (o1.getTitle().compareToIgnoreCase(o2.getTitle()) < 0) {
-	                    return -1;
-	                } else {
-	                    if (o1.getTitle().compareToIgnoreCase(o2.getTitle()) == 0) {
-	                        return 0;
-	                    } else {
-	                        return 1;
-	                    }
-	                }
-			}
-
-        });
+		this.itemsOrdered.sort(Media.COMPARE_BY_TITLE_COST);
 		System.out.println("***********************CART***********************");
 		for (Media media : this.itemsOrdered) {
 			System.out.println(media.toString());
 		}
 		System.out.println("***************************************************");
 	}
-
 
 	public void DisplayByTitle() {
-		Collections.sort(this.itemsOrdered, new Comparator<Media>() {
-		    @Override
-			public int compare(Media o1, Media o2) {
-		    	  if (o1.getTitle().compareToIgnoreCase(o2.getTitle()) < 0) {
-	                    return -1;
-	                } else {
-	                    if (o1.getTitle().compareToIgnoreCase(o2.getTitle()) == 0) {
-	                        return 0;
-	                    } else {
-	                        return 1;
-	                    }
-	                }
-			}
-
-        });
+		this.itemsOrdered.sort(Media.COMPARE_BY_TITLE_COST);
 		System.out.println("***********************CART***********************");
 		for (Media media : this.itemsOrdered) {
 			System.out.println(media.toString());
 		}
 		System.out.println("***************************************************");
 	}
+
 	public void DisplayByCost() {
-		Collections.sort(this.itemsOrdered, new Comparator<Media>() {
-		    @Override
-			public int compare(Media o1, Media o2) {
-		    	  if (o1.getCost() < o2.getCost()) {
-	                    return -1;
-	                } else {
-	                    if (o1.getCost() == o2.getCost()) {
-	                        return 0;
-	                    } else {
-	                        return 1;
-	                    }
-	                }
-			}
-
-        });
+		this.itemsOrdered.sort(Media.COMPARE_BY_COST_TITLE);
 
 		System.out.println("***********************CART***********************");
 		for (Media media : this.itemsOrdered) {
@@ -227,13 +150,14 @@ public class Cart {
 		}
 		System.out.println("***************************************************");
 	}
+
 	public DigitalVideoDisc[] emptyCart() {
 		DigitalVideoDisc empty[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 		return empty;
 	}
 
 	public int getQtyOrdered() {
-		return this.itemsOrdered.size();	
+		return this.itemsOrdered.size();
 	}
 
 	public Media removeByTitle(String title3) {
@@ -245,18 +169,18 @@ public class Cart {
 		return null;
 	}
 
-	   @Override
-	    public String toString() {
-	        if (this.itemsOrdered.size() == 0) {
-	            return "There is no media in the cart";
-	        } else {
-	            StringBuilder info = new StringBuilder("");
-	            for (Media media : this.itemsOrdered) {
-	                info.append(media.toString());
-	                info.append("----------------------\n");
-	            }
-	            return info.toString();
-	        }
-	    }
-	
+	@Override
+	public String toString() {
+		if (this.itemsOrdered.size() == 0) {
+			return "There is no media in the cart";
+		} else {
+			StringBuilder info = new StringBuilder("");
+			for (Media media : this.itemsOrdered) {
+				info.append(media.toString());
+				info.append("----------------------\n");
+			}
+			return info.toString();
+		}
+	}
+
 }
