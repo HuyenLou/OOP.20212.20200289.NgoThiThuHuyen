@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.media;
 
-public class Media {
+public class Media implements Comparable<Media> {
 	private int id;
 	private String title;
 	private String category;
@@ -54,19 +54,17 @@ public class Media {
         this.cost = cost;
     }
     
-    public boolean equals(Object o) {
-    	  if (o == this) {
-              return true;
-          }
-          if (!(o instanceof Media)) {
-              return false;
-          }
-          
-          Media c = (Media) o;
-          
-          // Compare the data members and return accordingly
-          return Double.compare(id, c.id) == 0;
-      }
+    public boolean equals(Object obj){
+        if(obj == this){
+            return true;
+        }
+        if (!(obj instanceof Media)){
+            return false;
+        }
+        Media media;
+        media = (Media) obj;
+        return this.title.equals(media.getTitle());
+    }
   
     	
   
@@ -87,6 +85,21 @@ public class Media {
         }
         return info.toString();
     }
+	@Override
+	public int compareTo(Media o) {
+		  if(this.getTitle().compareToIgnoreCase(o.getTitle()) > 0) {
+			   return 1;
+		   }
+		   else if (this.getTitle().compareToIgnoreCase(o.getTitle()) == 0) {
+			   if(this.getCategory().compareToIgnoreCase(o.getCategory()) >0){
+				   return 1;  
+			   }
+			   else {
+				   return -1;
+			   }
+		   }
+		   return -1;
+	}
     
 	
 
