@@ -1,10 +1,15 @@
 package hust.soict.dsai.aims.media;
 
-public class Media {
+import java.util.Comparator;
+
+public class Media implements Comparable<Media> {
 	private int id;
 	private String title;
 	private String category;
-	private float cost;			
+	private float cost;		
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+    
 	public Media() {
 		// TODO Auto-generated constructor stub
 	}
@@ -54,19 +59,17 @@ public class Media {
         this.cost = cost;
     }
     
-    public boolean equals(Object o) {
-    	  if (o == this) {
-              return true;
-          }
-          if (!(o instanceof Media)) {
-              return false;
-          }
-          
-          Media c = (Media) o;
-          
-          // Compare the data members and return accordingly
-          return Double.compare(id, c.id) == 0;
-      }
+    public boolean equals(Object obj){
+        if(obj == this){
+            return true;
+        }
+        if (!(obj instanceof Media)){
+            return false;
+        }
+        Media media;
+        media = (Media) obj;
+        return this.title.equals(media.getTitle());
+    }
   
     	
   
@@ -77,16 +80,31 @@ public class Media {
         System.out.println("-----------------------------");
         StringBuilder info = new StringBuilder("");
         if (this.getTitle() != null) {
-            info.append("Title: ").append(this.getTitle()).append("\n");
+            info.append("Title:  ").append(this.getTitle()).append("\n");
         }
         if (this.getCategory() != null) {
-            info.append("Category: ").append(this.getCategory()).append("\n");
+            info.append("Category:  ").append(this.getCategory()).append("\n");
         }
         if (this.getCost() != 0) {
-            info.append("Cost: ").append(this.getCost()).append("$").append("\n");
+            info.append("Cost:  ").append(this.getCost()).append("$").append("\n");
         }
         return info.toString();
     }
+	@Override
+	public int compareTo(Media o) {
+		  if(this.getTitle().compareToIgnoreCase(o.getTitle()) > 0) {
+			   return 1;
+		   }
+		   else if (this.getTitle().compareToIgnoreCase(o.getTitle()) == 0) {
+			   if(this.getCategory().compareToIgnoreCase(o.getCategory()) >0){
+				   return 1;  
+			   }
+			   else {
+				   return -1;
+			   }
+		   }
+		   return -1;
+	}
     
 	
 

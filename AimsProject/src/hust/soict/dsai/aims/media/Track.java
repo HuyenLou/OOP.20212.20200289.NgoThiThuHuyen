@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.media;
 
-public class Track implements Playable  {
+public class Track implements Playable, Comparable<Track>{
 	private final int id;
 	private static int nTracks = 0;
 	private static int count = 0;
@@ -8,21 +8,21 @@ public class Track implements Playable  {
 	private int length;
 
 	public Track() {
-		nTracks++;
+		setnTracks(getnTracks() + 1);
 		count++;
 		this.id = count++;
 	}
 
 	public Track(String title) {
 		this.title = title;
-		nTracks++;
+		setnTracks(getnTracks() + 1);
 		count++;
 		this.id = count;
 	}
 
 	public Track(int length) {
 		this.length = length;
-		nTracks++;
+		setnTracks(getnTracks() + 1);
 		count++;
 		this.id = count;
 	}
@@ -30,7 +30,7 @@ public class Track implements Playable  {
 	public Track(String title, int length) {
 		this.title = title;
 		this.length = length;
-		nTracks++;
+		setnTracks(getnTracks() + 1);
 		count++;
 		this.id = count;
 	}
@@ -51,11 +51,21 @@ public class Track implements Playable  {
 		this.length = length;
 	}
 	
-	 public String toString() {
-	        return "Title: " + this.getTitle() + " - " + "Length: " + this.getLength();
+	    public boolean equals(Object obj) {
+	        if (obj == this) {
+	            return true;
+	        }
+	        if (!(obj instanceof Track)) {
+	            return false;
+	        }
+	        Track track;
+	        track = (Track) obj;
+	        return (this.title.equals(track.getTitle())) && this.length == track.getLength();
 	    }
+
 	
-    // Override method play()
+    
+	@Override
     public void play() {
         if (this.getLength() > 0) {
         	System.out.println("Playing Track: " + this.getTitle());
@@ -64,5 +74,31 @@ public class Track implements Playable  {
         	System.out.println("This track has some problems");
         }
     }
+
+	@Override
+	public int compareTo(Track o) {
+		if(this.getTitle().compareToIgnoreCase(o.getTitle()) > 0) {
+			   return 1;
+		   }
+		return -1;
+	}
+
+	 @Override
+	    public String toString() {
+	        return "Title:  " + this.getTitle() + " | " + "Length: " + this.getLength() + "s";
+	    }
+	public int getId() {
+		return id;
+	}
+
+	public static int getnTracks() {
+		return nTracks;
+	}
+
+	public static void setnTracks(int nTracks) {
+		Track.nTracks = nTracks;
+	}
+	
+	
 
 }

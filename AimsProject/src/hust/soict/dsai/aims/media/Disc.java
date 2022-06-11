@@ -61,10 +61,10 @@ public class Disc extends Media {
     public String toString() {
         StringBuilder info = new StringBuilder(super.toString());
         if (this.getDirector() != null) {
-            info.append("Director: ").append(this.getDirector()).append("\n");
+            info.append("Director:  ").append(this.getDirector()).append("\n");
         }
         if (this.getLength() != 0) {
-            info.append("Length: ").append(this.getLength()).append("\n");
+            info.append("Length:  ").append(this.getLength()).append("\n");
         }
         return info.toString();
     }
