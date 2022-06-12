@@ -1,0 +1,11 @@
+Question:
+- Create an ArrayList of Media, then add some media (CD, DVD, or Book) to the list.
+- Iterate through the list and print out the information of the media by using the toString() method.
+Observe what happens and explain it in detail.
+
+Answer:
+with 3 different types of media ( book,cd,dvd),even though they are calling the same method(toString()) 
+but for each type, the results are different and appropriate for each object information.
+Explain:
+because for each class( Book, CompactDisc, DigitalVideoDisc), we have overridden the method toString 
+so that it is appropriate for each class. we have achieved the polymorphism of toString() method.
