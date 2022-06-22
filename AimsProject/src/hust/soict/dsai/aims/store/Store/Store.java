@@ -11,6 +11,9 @@ public class Store {
 
     private final ArrayList<Media> itemsInStore = new ArrayList<Media>();
     
+    public ArrayList<Media> getItemsInStore() {
+    	return this.itemsInStore;
+    }
     public void addMedia(Media media) {
         if (!this.itemsInStore.contains(media)) {
             this.itemsInStore.add(media);
