@@ -1,5 +1,5 @@
 package hust.soict.dsai.swing;
 
-public class NumberGrid {
+public class ButtonListener {
 
 }
