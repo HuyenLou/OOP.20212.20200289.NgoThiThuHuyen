@@ -48,6 +48,12 @@ public class Disc extends Media {
 		count++;
 		this.setId(count);
 	}
+    public Disc(String title, String category, String director, float cost) {
+        super(title, category, cost);
+        this.director = director;
+        nDiscs++;
+        this.setId(nDiscs);
+    }
 
 	public Disc(String title, String category, String director, int length, float cost) {
 		super(title, category, cost);
