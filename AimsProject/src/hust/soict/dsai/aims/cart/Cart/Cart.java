@@ -1,17 +1,20 @@
 package hust.soict.dsai.aims.cart.Cart;
 
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.naming.LimitExceededException;
+
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private final ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
 	public boolean check_Max() {
 		if (this.itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
@@ -20,7 +23,7 @@ public class Cart {
 		return true;
 	}
 
-	public void addMedia(Media media) {
+	public void addMedia(Media media) throws LimitExceededException  {
 		if (check_Max() == false) {
 			if (this.itemsOrdered.contains(media) == false) {
 				this.itemsOrdered.add(media);
@@ -29,17 +32,17 @@ public class Cart {
 				System.out.println("The media has already been in the cart");
 			}
 		} else {
-			System.out.println("The cart is full");
+			throw new LimitExceededException("ERROR: The number of media has reached its limit!");
 		}
 	}
 
-	public void addMedia(Media[] mediaList) {
+	public void addMedia(Media[] mediaList) throws LimitExceededException  {
 		for (Media media : mediaList) {
 			this.addMedia(media);
 		}
 	}
 
-	public void addMedia(Media media1, Media media2) {
+	public void addMedia(Media media1, Media media2)  throws LimitExceededException {
 		this.addMedia(media1);
 		this.addMedia(media2);
 	}
@@ -151,8 +154,8 @@ public class Cart {
 		System.out.println("***************************************************");
 	}
 
-	public DigitalVideoDisc[] emptyCart() {
-		DigitalVideoDisc empty[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+	public Media[] emptyCart() {
+		Media empty[] = new Media[MAX_NUMBERS_ORDERED];
 		return empty;
 	}
 
@@ -182,5 +185,27 @@ public class Cart {
 			return info.toString();
 		}
 	}
+
+	public ObservableList<Media> getItemsOrdered(){
+		return this.itemsOrdered;
+	}
+	
+    public String filter(int id) {
+        for (Media media : this.itemsOrdered) {
+            if (media.getId() == id) {
+                return media.toString();
+            }
+        }
+        return "Can not find the media with id " + id + " in the cart!";
+    }
+    
+    public String filter(String title) {
+        for (Media media : this.itemsOrdered) {
+            if (media.getTitle().equals(title)) {
+                return media.toString();
+            }
+        }
+        return "Can not find the media with title " + title + " in the cart!";
+    }
 
 }

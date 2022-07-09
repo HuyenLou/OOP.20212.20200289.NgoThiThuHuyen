@@ -1,5 +1,7 @@
 package hust.soict.dsai.aims.media;
 
+import hust.soict.dsai.aims.exception.PlayerException;
+
 public class Track implements Playable, Comparable<Track>{
 	private final int id;
 	private static int nTracks = 0;
@@ -66,12 +68,12 @@ public class Track implements Playable, Comparable<Track>{
 	
     
 	@Override
-    public void play() {
+    public void play() throws PlayerException {
         if (this.getLength() > 0) {
         	System.out.println("Playing Track: " + this.getTitle());
             System.out.println("Track length: " + this.getLength());
         } else {
-        	System.out.println("This track has some problems");
+        	throw new PlayerException("ERROR: The track length is non-positive!");
         }
     }
 

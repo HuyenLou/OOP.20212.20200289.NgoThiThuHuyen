@@ -12,7 +12,7 @@ public class StoreTest {
     	store.addMedia(book);
     	System.out.println(book.getTitle());
     	System.out.println(book.getCost());
- 		CompactDisc cd = new CompactDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+ 		CompactDisc cd = new CompactDisc("gn", 12);
  		store.addMedia(cd);
 
  		DigitalVideoDisc dvd = new DigitalVideoDisc("Star War", "Science Fiction", "George Lucas", 87, 24.95f);

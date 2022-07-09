@@ -63,6 +63,20 @@ public class Disc extends Media {
 		count++;
 		this.setId(count);
 	}
+	
+	public Disc(String title, String category, String cost, String director, String length) throws NumberFormatException, NullPointerException{
+		super(title, category, cost);
+		System.out.println("director: " + director);
+		if(director==null||director.isBlank())
+			throw new NullPointerException("Director field is empty");
+		try {
+			this.director = director;
+			this.length = Integer.parseInt(length);
+		}
+		catch(NumberFormatException e) {
+			throw new NumberFormatException("Length must be a positive integer!");
+		}
+	} 
     @Override
     public String toString() {
         StringBuilder info = new StringBuilder(super.toString());

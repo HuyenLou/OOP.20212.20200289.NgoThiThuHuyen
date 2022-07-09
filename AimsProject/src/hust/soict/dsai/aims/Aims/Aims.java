@@ -9,6 +9,8 @@ import hust.soict.dsai.thread.MemoryDaemon.MemoryDaemon;
 
 import java.util.Scanner;
 
+import javax.naming.LimitExceededException;
+
 public class Aims {
 	static Scanner sc = new Scanner(System.in);
 
@@ -46,7 +48,7 @@ public class Aims {
 		System.out.println("Please choose a number: 0-1-2-3-4");
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException {
 		
 				
 		Cart anOrder = new Cart();
@@ -227,13 +229,13 @@ public class Aims {
 					case 1:
 						System.out.println("please enter the ID of DVD you want to filter: ");
 						id = sc.nextInt();
-						currentCart.searchByID(id);
+						currentCart.filter(id);
 						break;
 					case 2:
 						System.out.println("please enter the title of DVD you want to filter: ");
 						sc.nextLine();
 						String title = sc.nextLine();
-						currentCart.searchByTitle(title);
+						currentCart.filter(title);
 						break;
 					}
 					break;

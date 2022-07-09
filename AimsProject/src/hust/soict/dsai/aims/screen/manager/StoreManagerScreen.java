@@ -21,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
@@ -114,7 +115,7 @@ public class StoreManagerScreen extends JFrame {
     	return header;
     }
     
-    JPanel createCenter() {
+    JPanel createCenter() throws PlayerException {
     	
     	JPanel center = new JPanel();
     	center.setLayout(new GridLayout(3, 3, 2, 2));
@@ -128,7 +129,7 @@ public class StoreManagerScreen extends JFrame {
     	return center;
     	
     }
-    public StoreManagerScreen(Store store) {
+    public StoreManagerScreen(Store store) throws PlayerException {
     	this.store = store;
     	
     	Container cp = getContentPane();
@@ -143,7 +144,7 @@ public class StoreManagerScreen extends JFrame {
     }
     
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PlayerException {
     	Store store = new Store();
 
     	CompactDisc cd = new CompactDisc("Star Wars", "Science Fiction", "George Lucas", "thm", 24.95f);

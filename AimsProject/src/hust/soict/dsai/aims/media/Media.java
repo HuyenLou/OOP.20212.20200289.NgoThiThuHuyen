@@ -22,11 +22,29 @@ public class Media implements Comparable<Media> {
         this.cost = cost;
     }
 
-    public Media(String title, String category, float cost) {
+    public Media(String title, String category, float cost)  {
         this.title = title;
         this.category = category;
         this.cost = cost;
     }
+    
+	public Media(String title, String category, String cost) throws NullPointerException, NumberFormatException {
+		if(title==null || title.isBlank())
+			throw new NullPointerException("Title field is empty!");
+		if(category==null || category.isBlank())
+			throw new NullPointerException("Category field is empty!");
+		if(cost==null || cost.isBlank())
+			throw new NullPointerException("Cost field is empty!");
+		
+		try {
+			this.title = title;
+			this.cost = Float.parseFloat(cost);
+			this.category = category;
+		} catch (NumberFormatException e) {
+			System.err.println("Cost must be a positive number!");
+			throw new NumberFormatException("Cost must be a positive number!");
+		}
+	} 
     public int getId() {
         return id;
     }
@@ -60,16 +78,21 @@ public class Media implements Comparable<Media> {
     }
     
     public boolean equals(Object obj){
-        if(obj == this){
-            return true;
-        }
-        if (!(obj instanceof Media)){
-            return false;
-        }
-        Media media;
-        media = (Media) obj;
-        return this.title.equals(media.getTitle());
-    }
+		try {
+			if(obj instanceof Media) {
+				Media tmp = (Media) obj;
+				return tmp.getTitle().toLowerCase().equals(title.toLowerCase());
+			}
+		} catch (ClassCastException e) {
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			System.err.println("Null error");
+		}
+		
+		return false;
+	}
+    
   
     	
   
