@@ -1,7 +1,12 @@
 package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import javax.naming.LimitExceededException;
+
+import hust.soict.dsai.aims.exception.PlayerException;
 
 public class CompactDisc extends Disc implements Playable {
 
@@ -17,12 +22,6 @@ public class CompactDisc extends Disc implements Playable {
 		this.setId(count);
 	}
 
-	public CompactDisc(String title) {
-		super(title);
-		nCompactDiscs++;
-		count++;
-		this.setId(count);
-	}
 
 	public CompactDisc(String title, float cost) {
 		super(title, cost);
@@ -31,12 +30,14 @@ public class CompactDisc extends Disc implements Playable {
 		this.setId(count);
 	}
 
-	public CompactDisc(String title, String category, String director,String artist, float cost) {
+	public CompactDisc(String title, String category, String director, String artist, float cost) throws NumberFormatException, NullPointerException {
 		super(title, category, director, cost);
 		this.artist = artist;
 		nCompactDiscs++;
 		count++;
 		this.setId(count);
+		if(artist==null|| artist.isBlank())
+			throw new NullPointerException("Artist field is empty!");
 	}
 
 	public CompactDisc(String title, String category, String director, int length, float cost, String artist,
@@ -53,16 +54,16 @@ public class CompactDisc extends Disc implements Playable {
 		return artist;
 	}
 
-	public void addTrack(Track track) {
+	public void addTrack(Track track) throws Exception  {
 		if (this.tracks.contains(track) == false) {
 			this.tracks.add(track);
 			System.out.println("A track has been added");
 		} else {
-			System.out.println("The track has already been in the CD");
+			throw new Exception("ERROR: The track has already been in the CD");
 		}
 	}
 
-	public void addTrack(Track track, Track... trackList) {
+	public void addTrack(Track track, Track... trackList) throws Exception  {
 		this.addTrack(track);
 		for (Track track_ : trackList) {
 			this.addTrack(track_);
@@ -90,15 +91,21 @@ public class CompactDisc extends Disc implements Playable {
 	}
 
 	@Override
-	public void play() {
-		if (this.tracks.size() == 0) {
-			System.out.println("there is no song in the CD");
-		} else {
-			for (Track track : this.tracks) {
-				track.play();
+	public void play() throws PlayerException {
+		if (getLength() > 0) {
+			Iterator<Track> iter = tracks.iterator();
+			Track nextTrack;
+			while (iter.hasNext()) {
+				nextTrack = (Track) iter.next();
+				nextTrack.play();
 			}
+		} else {
+			throw new PlayerException("ERROR: The CD length is non-positive!");
+
 		}
 	}
+
+	
 
 	@Override
 	public String toString() {

@@ -5,13 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
 
 public class MediaStore extends JPanel {
 	private Media media;
 
-	public MediaStore(Media media) {
+	public MediaStore(Media media) throws PlayerException {
 		this.media = media;
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

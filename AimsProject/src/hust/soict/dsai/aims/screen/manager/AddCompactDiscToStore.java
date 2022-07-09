@@ -61,7 +61,11 @@ public class AddCompactDiscToStore extends AddItemToStoreScreen {
 				if (!Tracks.getText().isEmpty()) {
 					for (String line : Tracks.getText().split(",", 0)) {
 						if (createTrack(line) != null) {
-							CD.addTrack(createTrack(line));
+							try {
+								CD.addTrack(createTrack(line));
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
 						}
 					}
 					store.addMedia(CD);

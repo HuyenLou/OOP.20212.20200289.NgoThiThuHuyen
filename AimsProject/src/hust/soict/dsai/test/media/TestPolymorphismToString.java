@@ -17,7 +17,7 @@ public class TestPolymorphismToString {
         authors.add("JK");
         Book book = new Book("Harry Potter", "Fiction", 12.78f, authors);
 
-		CompactDisc cd = new CompactDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+		CompactDisc cd = new CompactDisc("Star Wars", 87);
 
 		DigitalVideoDisc dvd = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
         mediae.add(cd);

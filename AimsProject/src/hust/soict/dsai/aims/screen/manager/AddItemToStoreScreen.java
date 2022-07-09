@@ -23,6 +23,7 @@ import java.util.Collections;
 
 import javax.swing.JTextField;
 
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
@@ -90,7 +91,11 @@ public class AddItemToStoreScreen extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new StoreManagerScreen(store);
+				try {
+					new StoreManagerScreen(store);
+				} catch (PlayerException e1) {
+					e1.printStackTrace();
+				}
 
 			}
 
